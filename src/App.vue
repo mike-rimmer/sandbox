@@ -8,7 +8,7 @@
         <SalesCart/>
       </div> 
          <button  v-show="selectedItems.length"
-         @click="showCart = !showCart"
+         @click="toggleCart"
         >Go To Cart
         </button>
    </div>
@@ -28,13 +28,22 @@ components:{
 },
 
 computed:{
-  ...mapState(['inventory', 'selectedItems', 'showCart'])
+  ...mapState(['inventory', 'selectedItems', 'showCart']),
 
-},
+//  To toggle state in a vuex store use a get/set object
+
+
+  },
 
 data(){
   return{
-   showCart:false,
+  //  showCart:false,
+  }
+},
+
+methods:{
+  toggleCart(){
+    this.$store.commit('toggleCart')
   }
 }
 

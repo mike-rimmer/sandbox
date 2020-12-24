@@ -17,9 +17,11 @@ export const store = new Vuex.Store({
 
        selectedItems:[],
 
-       showCart:true
+       showCart:false
     
     },
+
+
 
    mutations:{
      addSelectedItem(state, payload){
@@ -30,7 +32,12 @@ export const store = new Vuex.Store({
        state.selectedItems = state.selectedItems.filter( ele =>{
          return ele.name != payload
        })
+     },
+
+     toggleCart: (state) =>{
+       state.showCart = !state.showCart
      }
+
    },
 
    actions:{
@@ -40,6 +47,10 @@ export const store = new Vuex.Store({
 
      removeSelectedItem(context, payload){
       context.commit('removeSelectedItem', payload)     
+    },
+
+    toggleCart: (context) =>{
+      context.commit('toggleCart')
     }
    }
 
