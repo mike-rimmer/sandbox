@@ -2,7 +2,7 @@
   <div class = 'salescart'>
       <h3>Sales Cart</h3>
       <ul>
-      <li v-for = "item in $store.state.selectedItems" 
+      <li v-for = "item in selectedItems" 
       :key= item.name>
       <span>
           {{item.name}}
@@ -17,9 +17,9 @@
 
 <script>
 
-
+import {mapState} from 'vuex'
 export default {
-computed: {},
+computed: { ...mapState(['inventory', 'selectedItems', 'showCart'])},
 
 filters:{
     convert2Dollars(value){

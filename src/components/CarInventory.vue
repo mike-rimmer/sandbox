@@ -8,9 +8,9 @@
     <div class='inventory'>
       <div
        class="card"
-       :class = "$store.state.selectedItems.find( ele => ele.name == item.name) ? 'selected' : '' " 
-       v-for = 'item in $store.state.inventory' :key= item.id
-       @click=" manageCart(item)"       >
+       :class = "selectedItems.find( ele => ele.name == item.name) ? 'selected' : '' " 
+       v-for = 'item in inventory' :key= item.id
+       @click="manageCart(item)"       >
        <h4>{{item.name}}</h4>
         <img :src = 'item.url' width='200ps'>
         <div class = 'desc'>
@@ -26,7 +26,7 @@
 
 <script>
 
-// import {mapGetters, mapMutations} from 'vuex'
+import {mapState} from 'vuex'
 export default {
  name:'CarInventory',
  components:{
@@ -40,6 +40,7 @@ export default {
  },
 
  computed:{
+       ...mapState(['inventory', 'selectedItems', 'showCart'])
 
  },
 

@@ -7,7 +7,7 @@
       <div v-show="showCart">
         <SalesCart/>
       </div> 
-         <button  v-show="$store.state.selectedItems.length"
+         <button  v-show="selectedItems.length"
          @click="showCart = !showCart"
         >Go To Cart
         </button>
@@ -18,7 +18,7 @@
 <script>
 // import simple from '@/components/simple.vue';
 // import vuex101 from '@/components/vuex101.vue';
-
+import {mapState} from 'vuex';
 import CarInventory from '@/components/CarInventory.vue';
 import SalesCart from '@/components/SalesCart.vue';
 export default {
@@ -28,6 +28,7 @@ components:{
 },
 
 computed:{
+  ...mapState(['inventory', 'selectedItems', 'showCart'])
 
 },
 
