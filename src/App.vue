@@ -1,28 +1,55 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div class="container">
+      <div class="inventory">
+        <CarInventory/>
+       </div> 
+      <div v-show="showCart">
+        <SalesCart/>
+      </div> 
+         <button  v-show="$store.state.selectedItems.length"
+         @click="showCart = !showCart"
+        >Go To Cart
+        </button>
+   </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import simple from '@/components/simple.vue';
+// import vuex101 from '@/components/vuex101.vue';
 
+import CarInventory from '@/components/CarInventory.vue';
+import SalesCart from '@/components/SalesCart.vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+components:{
+  CarInventory,
+  SalesCart
+},
+
+computed:{
+
+},
+
+data(){
+  return{
+   showCart:false,
   }
+}
+
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.container{
+  display: flex;
+}
+
+.cart{
+  flex:50%
+}
+
+inventory{
+  flex:50%;
 }
 </style>
